@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 import os
 import os.path as osp
@@ -97,10 +99,10 @@ def train_recommender(cfg: DictConfig):
 
     if "bpr" in cfg.models:
         logger.info(bpr)
-        
+
         embs = bpr.i_factors
         bias = bpr.i_biases
-        
+
     if "vae_no_bias" in cfg.models:
         logger.info(vaecf.vae)
 

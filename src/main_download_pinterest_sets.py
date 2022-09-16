@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 import os
 import os.path as osp
@@ -31,7 +33,9 @@ def download_data_to_folder(df: pd.DataFrame, data_helper, img_out_dir: str) -> 
 
     # Download data
     dst_exsits = data_helper.list_files_in_dir(img_out_dir)
-    to_download_df = df[~df["img_path"].apply(lambda x: osp.basename(x)).isin(dst_exsits)]
+    to_download_df = df[
+        ~df["img_path"].apply(lambda x: osp.basename(x)).isin(dst_exsits)
+    ]
     logger.info(f"Post filtering. [Before After]=[{len(df)} {len(to_download_df)}]")
     num_failed = 0
     for _, row in tqdm(to_download_df.iterrows(), total=len(to_download_df)):
@@ -100,7 +104,7 @@ def download_pinterest_data(cfg):
     url_df = url_df[url_df["pin_id"].isin(pin_id_to_keep)]
     logger.info(f"Filtered {time.time()-t1:.2f}[s]. {[len(url_df),len(repin_df)]=}")
 
-     # Download data
+    # Download data
     t1 = time.time()
     len_init = len(url_df)
     url_df["img_path"] = url_df["pin_id"].apply(

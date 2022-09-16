@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 import os
 import os.path as osp
@@ -165,7 +167,7 @@ def calc_precision_at_10(labels, preds):
     return calc_precision_at_k(labels, preds, k=10)
 
 
-def calc_ap_score(labels, preds) ->np.ndarray:
+def calc_ap_score(labels, preds) -> np.ndarray:
     aps = []
     num_experiments = 50
     num_samples = int(0.9 * len(labels))
@@ -212,7 +214,7 @@ def load_preds(base_path):
 
         ap_a = average_precision_score(labels, preds_a)  # ,average='micro')
         ap_b = average_precision_score(labels, preds_b)  # ,average='micro')
-        ratio = np.round(100 * np.round(ap_b,3) / np.round(ap_a,3) - 100,2)
+        ratio = np.round(100 * np.round(ap_b, 3) / np.round(ap_a, 3) - 100, 2)
         print(
             f"{key_a} {key_b} [{ap_a:.3f} {ap_b:.3f} {ratio:.3f}%]. size={preds_a.shape}"
         )

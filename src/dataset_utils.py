@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Facebook, Inc.
+# All rights reserved.
 import logging
 import os.path as osp
 import time

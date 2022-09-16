@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 import os
 import os.path as osp
@@ -135,7 +137,7 @@ def train_model_cf_based(cfg: DictConfig):
         torch.save(loss_vec, out_path)
 
         if cfg.save_as_asset is True:
-            logger.info(f'{cfg.save_as_asset=}')
+            logger.info(f"{cfg.save_as_asset=}")
             out_path = osp.join(out_dir, "..", f"cf_based_{set_name}_loss.pt")
             torch.save(loss_vec, out_path)
 
@@ -143,7 +145,7 @@ def train_model_cf_based(cfg: DictConfig):
         torch.save(cf_embeddings, out_path)
 
         if cfg.save_as_asset is True:
-            logger.info(f'{cfg.save_as_asset=}')
+            logger.info(f"{cfg.save_as_asset=}")
             out_path = osp.join(out_dir, "..", f"cf_embeddings_{set_name}.pt")
             torch.save(cf_embeddings, out_path)
 

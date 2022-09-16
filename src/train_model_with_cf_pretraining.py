@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 import os
 import time
@@ -126,7 +128,9 @@ def train_model_with_cf_pretraining(cfg: DictConfig):
     )
 
     trainer.fit(lit_h, trainloader, testloader)
-    logger.info(f"Finish label training in {time.time() -t_start :.2f} sec. {lit_h.map_best=:.3f}")
+    logger.info(
+        f"Finish label training in {time.time() -t_start :.2f} sec. {lit_h.map_best=:.3f}"
+    )
     logger.info(f"{out_dir=}")
     trainer.save_checkpoint(osp.join(out_dir, "model.ckpt"))
 

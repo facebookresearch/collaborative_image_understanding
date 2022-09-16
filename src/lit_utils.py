@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 
 import numpy as np
@@ -18,7 +20,7 @@ class LitModel(pl.LightningModule):
         cf_vector_dim: int,
         cfg,
         pos_weight=None,
-        out_dir:str ='.'
+        out_dir: str = ".",
     ):
         super().__init__()
         self.cfg = cfg

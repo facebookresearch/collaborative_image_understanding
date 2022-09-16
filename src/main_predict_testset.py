@@ -1,3 +1,5 @@
+# Copyright (c) 2015-present, Meta Platforms, Inc. and affiliates.
+# All rights reserved.
 import logging
 import os
 import os.path as osp
@@ -13,6 +15,7 @@ from tqdm import tqdm
 from hydra.utils import get_original_cwd, to_absolute_path
 from dataset_utils import get_datasets
 from lit_utils import LitModel
+
 logger = logging.getLogger(__name__)
 
 
@@ -89,7 +92,7 @@ def predict_testset(cfg: DictConfig):
 
     t0 = time.time()
     for key, base_dir in resource_dict.items():
-        logger.info(f'{key}, {base_dir}')
+        logger.info(f"{key}, {base_dir}")
         preds_path = osp.join(base_dir, "preds.npy")
         if osp.exists(preds_path):
             continue
@@ -111,7 +114,8 @@ def predict_testset(cfg: DictConfig):
 
         np.save(preds_path, preds)
         np.save(osp.join(base_dir, "labels.npy"), labels)
-        logger.info(f'Finish in {time.time()-t0:.2f}. {preds_path}')
+        logger.info(f"Finish in {time.time()-t0:.2f}. {preds_path}")
+
 
 if __name__ == "__main__":
     predict_testset()
