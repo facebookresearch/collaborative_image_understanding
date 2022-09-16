@@ -1,0 +1,24 @@
+# Data params
+data_dir: /data/amazon_dataset # /data/movelens_dataset /data/movielens_dataset/pinterest_dataset 
+category: Clothing_Shoes_and_Jewelry # Clothing_Shoes_and_Jewelry/Home_and_Kitchen/Beauty/Toys_and_Games/flicker/movielens/pinterest
+emb_size: [64]
+bottleneck_size: 32
+test_size: 0.1
+user_based: true
+
+models: ["most_pop", "bpr", "vae_no_bias"]
+
+# Optimization params
+batch_size: 4096
+lr: 0.01
+n_epochs: 100
+beta: 1.0
+lr_steps: [120] # lr_steps > n_epochs means dont use it
+
+# Flow params
+seed: 1234
+gpu: 0
+
+hydra:
+  run:
+    dir: ../outputs/${category}/train_recommender_${now:%Y%m%d_%H%M%S}

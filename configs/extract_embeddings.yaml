@@ -1,0 +1,12 @@
+# dir_path: "/home/ubuntu/cactus/outputs/Clothing_Shoes_and_Jewelry/train_model_multirun_20220107_122531/0_cf_weight=0.0_labeled_ratio=1.0"
+# dataset_name: Clothing_Shoes_and_Jewelry
+
+dir_path: "/home/ubuntu/cactus/outputs/Toys_and_Games/train_model_multirun_20220103_152519/7_cf_weight=0.0_labeled_ratio=1.0"
+dataset_name: Toys_and_Games
+
+batch_size: 128
+num_workers: 4
+
+hydra:
+  run:
+    dir: ../outputs/extract_embeddings

@@ -1,0 +1,18 @@
+data_dir: /data/amazon_dataset
+is_debug: false
+is_override: false
+base_url: "http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/"
+category_list:
+  - "Electronics"
+  - "Office_Products"
+  - "Clothing_Shoes_and_Jewelry"
+  - "Digital_Music"
+  - "Beauty"
+  - "Home_and_Kitchen"
+  - "Video_Games"
+  - "Toys_and_Games"
+  - "Books"
+
+hydra:
+  run:
+    dir: ../outputs/download_data_${now:%Y%m%d_%H%M%S}

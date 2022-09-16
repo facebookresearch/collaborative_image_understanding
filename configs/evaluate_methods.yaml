@@ -1,0 +1,12 @@
+# Data params
+dataset_name: Clothing_Shoes_and_Jewelry # Clothing_Shoes_and_Jewelry/Toys_and_Games/movielens/pinterest
+dir_path: ../outputs/${dataset_name}/results.yaml
+
+seed: 1234
+
+hydra:
+  run:
+    dir: ../outputs/${dataset_name}/evaluate_methods_${now:%Y%m%d_%H%M%S}
+  sweep:
+    dir: .
+    subdir: ../outputs/${dataset_name}/evaluate_methods_${now:%Y%m%d_%H%M%S}

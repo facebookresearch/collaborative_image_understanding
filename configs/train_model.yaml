@@ -1,0 +1,45 @@
+# Data params
+category: Toys_and_Games # Clothing_Shoes_and_Jewelry/Toys_and_Games/Beauty/movielens/pinterest
+cf_vector_df_path: ../outputs/${category}/cf_df.pkl
+train_df_path: ../outputs/${category}/df_train.pkl
+test_df_path: ../outputs/${category}/df_test.pkl
+cf_based_train_loss_path: ../outputs/${category}/cf_based_train_loss.pt
+cf_based_test_loss_path: ../outputs/${category}/cf_based_test_loss.pt
+cf_embeddings_train_path: ../outputs/${category}/cf_embeddings_train.pt
+cf_embeddings_test_path: ../outputs/${category}/cf_embeddings_test.pt
+
+arch: resnet18 # Options: resnet18/mobilenet/regnet
+
+# Dataset params
+seed: 1234
+num_workers: 4
+labeled_ratio: 1.0 # Traninig set amount to contain label
+recall_at_k: []
+is_use_bias: true
+is_use_cf_embeddings: false
+confidence_type: uniform # Options: uniform/num_intercations/loss_based/pos_label_loss_based/max_pos_label_loss_based/pos_label_loss_based_norm
+conf_max_min_ratio: 3.0 # Confidence interval size
+
+# Optimization params
+is_pretrained: true # Use pretrained imagenet model
+cf_loss_type: exp # Options: triplet/exp
+batch_size: 256
+weight_decay: 1e-5
+lr: 1e-1
+milestones: [65, 99]
+epochs: 100
+
+label_weight: 1.0 # Binary label loss weight
+cf_weight: 2.0 # CF vectors loss weight
+cf_topk_loss_ratio: 1.0 # Use items with the lowest loss in the batch. 1.0 means consider all
+
+# Flow params
+is_debug: false
+gpu: 0
+
+hydra:
+  run:
+    dir: ../outputs/${category}/train_model_${now:%Y%m%d_%H%M%S}
+  sweep:
+    dir: ../outputs/${category}/train_model_multirun_${now:%Y%m%d_%H%M%S}
+    subdir: ${hydra.job.num}_cf_weight=${cf_weight}_labeled_ratio=${labeled_ratio}

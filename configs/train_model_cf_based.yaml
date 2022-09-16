@@ -1,0 +1,37 @@
+# Data params
+category: Toys_and_Games # pinterest/movielens/Clothing_Shoes_and_Jewelry/Toys_and_Games
+cf_vector_df_path: ../outputs/${category}/cf_df.pkl
+train_df_path: ../outputs/${category}/df_train.pkl
+test_df_path: ../outputs/${category}/df_test.pkl
+
+# Dataset params
+seed: 1234
+num_workers: 4
+labeled_ratio: 1.0 # The ratio fo the traninig set to contain label
+recall_at_k: []
+is_use_bias: true
+
+confidence_type: uniform
+
+# Optimization params
+batch_size: 512
+weight_decay: 1e-5
+lr: 1
+milestones: [25, 55]
+epochs: 60
+
+# Flow params
+is_debug: false
+gpu: 0
+save_as_asset: False # Don't save in top directory
+
+is_pretrained: false  # Ignored
+arch: resnet18 # Ignored
+
+
+hydra:
+  run:
+    dir: ../outputs/${category}/train_model_cf_based_${now:%Y%m%d_%H%M%S}
+  sweep:
+    dir: ../outputs/${category}/train_model_cf_based_multirun_${now:%Y%m%d_%H%M%S}
+    subdir: ${hydra.job.num}

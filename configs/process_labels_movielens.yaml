@@ -1,0 +1,11 @@
+# Data params
+data_dir: /data/movielens_dataset
+category: movielens
+train_set_ratio: 0.7
+min_label_count: 3 # Minimum number of items for each label in training set and test set
+
+num_samples_threshold: 10 # Minimum number of items per label. Otherwise remove leaf label
+
+hydra:
+  run:
+    dir: ../outputs/${category}/process_label_movielens_${now:%Y%m%d_%H%M%S}

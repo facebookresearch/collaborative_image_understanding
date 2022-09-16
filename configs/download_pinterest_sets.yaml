@@ -1,0 +1,15 @@
+category: pinterest
+data_dir: /data/pinterest_dataset
+repin_file: ImageDatasetRepinactivity.gz
+url_file: ImageDatasetImagesURLs.gz
+label_name_file: ImageCategoryID.txt
+
+num_interactions_min: 10
+train_set_ratio: 0.7
+
+is_debug: false
+is_override: false
+
+hydra:
+  run:
+    dir: ../outputs/${category}/download_data_${now:%Y%m%d_%H%M%S}
